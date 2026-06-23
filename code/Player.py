@@ -1,8 +1,27 @@
-class Player:
+import pygame.key
 
-    def __init__(self):
-        self.window = None
+from code.Const import ENTITY_SPEED, WIN_HEIGHT, WIN_WIDTH, PLAYER_KEY_UP, PLAYER_KEY_DOWN, PLAYER_KEY_LEFT, \
+    PLAYER_KEY_RIGHT
+from code.Entity import Entity
 
 
-    def run (self, ):
+class Player(Entity):
+
+    def __init__(self, name: str, position: tuple):
+        super().__init__(name, position)
+
+    def update (self, ):
+        pass
+
+    # Controle de direção
+    def move (self, ):
+        pressed_key = pygame.key.get_pressed()
+        if pressed_key[PLAYER_KEY_UP] and self.rect.top > 0:
+            self.rect.centery -= ENTITY_SPEED[self.name]
+        if pressed_key[PLAYER_KEY_DOWN] and self.rect.bottom < WIN_HEIGHT:
+            self.rect.centery += ENTITY_SPEED[self.name]
+        if pressed_key[PLAYER_KEY_LEFT] and self.rect.left > 0:
+            self.rect.centerx -= ENTITY_SPEED[self.name]
+        if pressed_key[PLAYER_KEY_RIGHT] and self.rect.right < WIN_WIDTH:
+            self.rect.centerx += ENTITY_SPEED[self.name]
         pass

@@ -17,7 +17,7 @@ class Menu:
         self.window = window
         self.menu_option = 0
 
-        self.surf = pygame.image.load("asset/menuback.png")
+        self.surf = pygame.image.load("asset/menuback.png").convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def handle_event(self, event):
