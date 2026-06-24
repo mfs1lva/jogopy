@@ -16,6 +16,7 @@ class Game:
         self.level = None
 
         self.state = "MENU"
+        self.player_score = [0, 0]
 
     def run(self):
 
@@ -31,7 +32,7 @@ class Game:
                     menu_return = self.menu.handle_event(event)
 
                     if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]:
-                        self.level = Level(self.window, "Level1", menu_return)
+                        self.level = Level(self.window, "Level1", menu_return, self.player_score)
                         self.state = "LEVEL"
 
                     elif menu_return == MENU_OPTION[4]:
@@ -43,7 +44,21 @@ class Game:
                 self.menu.run()
 
             elif self.state == "LEVEL":
-                self.level.run()
+
+                level_return = self.level.run(self.player_score)
+
+                if level_return:
+
+                    if self.level.name == "Level1":
+                        self.level = Level(
+                            self.window,
+                            "Level2",
+                            self.level.game_mode,
+                            self.player_score
+                        )
+
+                    else:
+                        self.state = "MENU"
 
             pygame.display.flip()
             self.clock.tick(60)
