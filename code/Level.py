@@ -1,8 +1,10 @@
+import random
 import sys
+from random import choice
 
 import pygame.display
 
-from code.Const import C_WHITE, WIN_HEIGHT, MENU_OPTION
+from code.Const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 
@@ -20,11 +22,13 @@ class Level:
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('levelb'))
         self.entity_list.append(EntityFactory.get_entity('Player1'))
-        self.timeout = 2000 #20s
+        self.timeout = 4000 #4s
         self.clock = pygame.time.Clock()
 
         if game_mode in [MENU_OPTION[0], MENU_OPTION[1]]:
             self.entity_list.append(EntityFactory.get_entity('Player2'))
+
+        pygame.time.set_timer(EVENT_ENEMY,SPAWN_TIME)
 
 
 
@@ -44,6 +48,9 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == EVENT_ENEMY:
+                    choice = random.choice(('Enemy1', 'Enemy2'))
+                    self.entity_list.append(EntityFactory.get_entity(choice))
 
             # sei lá
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000} : .1f', C_WHITE, (10,5))

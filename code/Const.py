@@ -6,6 +6,8 @@ C_WHITE = (255, 255, 255)
 C_YELLOW = (241, 242, 105)
 
 # E
+EVENT_ENEMY = pygame.USEREVENT + 1
+
 ENTITY_SPEED = {
     'levelb1': 0,
     'levelb2': 1,
@@ -14,6 +16,8 @@ ENTITY_SPEED = {
     'levelb5': 4,
     'Player1': 3,
     'Player2': 3,
+    'Enemy1': 2,
+    'Enemy2': 1,
 }
 # M
 MENU_OPTION = ('NOVO JOGO 1P',
@@ -48,6 +52,8 @@ PLAYER_KEY_SHOOT = {
     'Player2': pygame.K_f
 }
 
+# S
+SPAWN_TIME = 4000
 
 # W
 WIN_WIDTH = 576
