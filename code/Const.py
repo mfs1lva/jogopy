@@ -15,10 +15,38 @@ ENTITY_SPEED = {
     'levelb4': 3,
     'levelb5': 4,
     'Player1': 3,
+    'Player1Shot': 3,
     'Player2': 3,
-    'Enemy1': 2,
+    'Player2Shot': 3,
+    'Enemy1': 1,
+    'Enemy1Shot': 5,
     'Enemy2': 1,
+    'Enemy2Shot': 2,
 }
+
+ENTITY_HEALTH = {
+    'levelb1': 999,
+    'levelb2': 999,
+    'levelb3': 999,
+    'levelb4': 999,
+    'levelb5': 999,
+    'Player1': 300,
+    'Player1Shot': 1,
+    'Player2': 300,
+    'Player2Shot': 1,
+    'Enemy1': 50,
+    'Enemy1Shot': 1,
+    'Enemy2': 60,
+    'Enemy2Shot': 1,
+}
+
+ENTITY_SHOT_DELAY = {
+    'Player1': 20,
+    'Player2': 15,
+    'Enemy1': 100,
+    'Enemy2': 200,
+}
+
 # M
 MENU_OPTION = ('NOVO JOGO 1P',
                'NOVO JOGO 2P - COOPERATIVO',
