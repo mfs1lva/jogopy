@@ -4,7 +4,7 @@ from pygame.font import Font
 
 from code.Const import (
     WIN_WIDTH,
-    COLOR_PURPLE,
+    C_PURPLE,
     MENU_OPTION,
     C_WHITE,
     C_YELLOW
@@ -58,7 +58,7 @@ class Menu:
         self.menu_text(
             50,
             "Python",
-            COLOR_PURPLE,
+            C_PURPLE,
             (WIN_WIDTH // 2, 120)
         )
 
