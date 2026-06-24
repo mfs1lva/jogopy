@@ -3,6 +3,8 @@ from code.Level import Level
 from code.Menu import Menu
 import pygame
 
+from code.Score import Score
+
 
 class Game:
     def __init__(self):
@@ -19,6 +21,8 @@ class Game:
         self.player_score = [0, 0]
 
     def run(self):
+        score = Score(self.window)
+
 
         while True:
 
@@ -35,6 +39,11 @@ class Game:
                         self.level = Level(self.window, "Level1", menu_return, self.player_score)
                         self.state = "LEVEL"
 
+                    # Mostra a pontuação
+                    elif menu_return == MENU_OPTION[3]:
+                        score.show_score()
+
+                    # Quita
                     elif menu_return == MENU_OPTION[4]:
                         pygame.quit()
                         return
@@ -56,6 +65,10 @@ class Game:
                             self.level.game_mode,
                             self.player_score
                         )
+
+                    elif self.level.name == "Level2":
+                        score.save_score(self.player_score)
+                        self.state = "MENU"
 
                     else:
                         self.state = "MENU"
