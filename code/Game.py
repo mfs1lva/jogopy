@@ -67,7 +67,7 @@ class Game:
                         )
 
                     elif self.level.name == "Level2":
-                        score.save_score(self.player_score)
+                        score.save_score(self.level.game_mode, self.player_score)
                         self.state = "MENU"
 
                     else:
