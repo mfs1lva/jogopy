@@ -12,7 +12,7 @@ files = {"include_files": asset_list_completa, "packages": ["pygame"]}
 setup(
     name="JogoPython",
     version="1.0",
-    description="Jogo Python App",
+    description="Space Nave App",
     options={"build_exe": files},
     executables=executables
 )

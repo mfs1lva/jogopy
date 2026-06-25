@@ -10,7 +10,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-        pygame.display.set_caption("Jogo Python")
+        pygame.display.set_caption("Space Nave")
 
         self.clock = pygame.time.Clock()
 
@@ -68,6 +68,7 @@ class Game:
                         )
 
                     elif self.level.name == "Level2":
+                        score.show_victory(self.player_score)
                         score.save_score(self.level.game_mode, self.player_score)
                         self.state = "MENU"
 

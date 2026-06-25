@@ -18,6 +18,52 @@ class Score:
         self.rect = self.surf.get_rect(left=0, top=0)
         pass
 
+    def show_victory(self, player_score: list[int]):
+
+        while True:
+
+            for event in pygame.event.get():
+
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    raise SystemExit
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        return
+
+            self.window.blit(self.surf, self.rect)
+
+            self.score_text(
+                48,
+                'VOCE VENCEU!',
+                C_YELLOW,
+                (288, 70)
+            )
+
+            self.score_text(
+                24,
+                f'Player 1: {player_score[0]} pontos',
+                C_WHITE,
+                (288, 140)
+            )
+
+            self.score_text(
+                24,
+                f'Player 2: {player_score[1]} pontos',
+                C_WHITE,
+                (288, 180)
+            )
+
+            self.score_text(
+                20,
+                'Pressione ENTER para continuar',
+                C_WHITE,
+                (288, 250)
+            )
+
+            pygame.display.flip()
+
     def save_score(self, game_mode, player_score: list[int]):
         db_proxy = DBProxy('DBScore')
         name = ''
@@ -76,7 +122,7 @@ class Score:
 
             self.score_text(
                 40,
-                'VOCÊ GANHOU!!',
+                'SCORE DO JOGO: ',
                 C_YELLOW,
                 SCORE_POS['Title']
             )

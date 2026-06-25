@@ -62,6 +62,22 @@ class Menu:
             (WIN_WIDTH // 2, 120)
         )
 
+        # Orientações dos Controles
+
+        self.menu_text(
+            12,
+            "P1: SETAS = MOVER | SHIFT DIREITO = ATIRAR",
+            C_WHITE,
+            (WIN_WIDTH // 2, 20)
+        )
+
+        self.menu_text(
+            12,
+            "P2: WASD = MOVER | F = ATIRAR",
+            C_WHITE,
+            (WIN_WIDTH // 2, 40)
+        )
+
         # opções
         for i in range(len(MENU_OPTION)):
 
