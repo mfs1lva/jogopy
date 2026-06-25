@@ -36,6 +36,7 @@ class Game:
                     menu_return = self.menu.handle_event(event)
 
                     if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]:
+                        self.player_score = [0, 0]  # RESET
                         self.level = Level(self.window, "Level1", menu_return, self.player_score)
                         self.state = "LEVEL"
 

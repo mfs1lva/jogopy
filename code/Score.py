@@ -21,6 +21,7 @@ class Score:
     def save_score(self, game_mode, player_score: list[int]):
         db_proxy = DBProxy('DBScore')
         name = ''
+        clock = pygame.time.Clock()
 
         # Define score e texto
         if game_mode == MENU_OPTION[0]:
@@ -40,6 +41,8 @@ class Score:
                 text = '[Player 2] Entre com seu nome:'
 
         while True:
+            clock.tick(60)
+            pygame.event.pump()
 
             for event in pygame.event.get():
 
@@ -49,18 +52,18 @@ class Score:
 
                 elif event.type == pygame.KEYDOWN:
 
-                    if event.key == K_RETURN and len(name) == 4:
+                    if event.key == K_RETURN:
+                        if len(name) == 4:
+                            db_proxy.save({
+                                'name': name,
+                                'score': score,
+                                'date': get_formatted_date()
+                            })
 
-                        db_proxy.save({
-                            'name': name,
-                            'score': score,
-                            'date': get_formatted_date()
-                        })
+                            db_proxy.close()
 
-                        db_proxy.close()
-
-                        self.show_score()
-                        return
+                            self.show_score()
+                            return
 
                     elif event.key == K_BACKSPACE:
                         name = name[:-1]
