@@ -1,4 +1,6 @@
-# C
+
+# C - CORES
+
 import pygame
 
 C_PURPLE = (73, 73, 166)
